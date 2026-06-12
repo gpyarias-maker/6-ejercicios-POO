@@ -1,0 +1,22 @@
+class PlanStreaming:
+    def __init__(self, nombre, tarifa_mes):
+        self.nombre = nombre
+        self._tarifa_mes = tarifa_mes
+
+    def cobrar(self):
+        return self._tarifa_mes
+
+class PlanFamiliar(PlanStreaming):
+    def cobrar(self):
+        pantallas_extra = 3 * 2
+        return self._tarifa_mes + pantallas_extra
+
+class PlanEstudiante(PlanStreaming):
+    def cobrar(self):
+        descuento = self._tarifa_mes * 0.50
+        return self._tarifa_mes - descuento
+
+planes = [PlanFamiliar("Plan Familia", 15), PlanEstudiante("Plan Universidad", 15)]
+
+for plan in planes:
+    print(f"El costo de {plan.nombre} es: ${plan.cobrar()}")
