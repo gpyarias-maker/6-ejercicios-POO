@@ -1,0 +1,27 @@
+class CuentaBancaria:
+    def __init__(self, titular, saldo_inicial):
+        self.titular = titular
+        self._saldo = saldo_inicial
+
+    def obtener_saldo(self):
+        return self._saldo
+
+    def realizar_operacion(self):
+        print("Procesando transacción bancaria...")
+
+class CuentaAhorro(CuentaBancaria):
+    def realizar_operacion(self):
+        interes = self._saldo * 0.05
+        self._saldo += interes
+        print(f"Cuenta de {self.titular}: Se sumaron {interes} de intereses. Saldo actual: {self._saldo}")
+
+class CuentaCorriente(CuentaBancaria):
+    def realizar_operacion(self):
+        comision = 10
+        self._saldo -= comision
+        print(f"Cuenta de {self.titular}: Se cobraron {comision} de comisión. Saldo actual: {self._saldo}")
+
+cuentas = [CuentaAhorro("Carlos", 1000), CuentaCorriente("Ana", 1000)]
+
+for c in cuentas:
+    c.realizar_operacion()
