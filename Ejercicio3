@@ -1,0 +1,22 @@
+class Empleado:
+    def __init__(self, nombre, pago_base):
+        self.nombre = nombre
+        self._pago_base = pago_base
+
+    def calcular_sueldo(self):
+        return self._pago_base
+
+class Programador(Empleado):
+    def calcular_sueldo(self):
+        bono_proyectos = 500
+        return self._pago_base + bono_proyectos
+
+class Vendedor(Empleado):
+    def calcular_sueldo(self):
+        comision = 300
+        return self._pago_base + comision
+
+personal = [Programador("Luis", 2000), Vendedor("María", 1500)]
+
+for p in personal:
+    print(f"Sueldo de {p.nombre}: ${p.calcular_sueldo()}")
