@@ -1,0 +1,23 @@
+class Heroe:
+    def __init__(self, nombre, salud_inicial):
+        self.nombre = nombre
+        self._salud = salud_inicial
+
+    def usar_habilidad(self):
+        print(f"{self.nombre} se prepara para la batalla.")
+
+class Guerrero(Heroe):
+    def usar_habilidad(self):
+        self._salud -= 10
+        print(f"¡{self.nombre} usa Espadazo! Su salud bajó a {self._salud} por el esfuerzo.")
+
+class Curandero(Heroe):
+    def usar_habilidad(self):
+        # 4. POLIMORFISMO: Su habilidad hace lo contrario, aumenta su propia salud.
+        self._salud += 20
+        print(f"¡{self.nombre} usa Rezo Sagrado! Su salud subió a {self._salud}.")
+
+equipo = [Guerrero("Aragorn", 100), Curandero("Elrond", 80)]
+
+for heroe in equipo:
+    heroe.use_habilidad()
