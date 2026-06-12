@@ -1,0 +1,21 @@
+class Envio:
+    def __init__(self, peso):
+        self._peso = peso
+
+    def procesar_envio(self):
+        print("Preparando el paquete...")
+
+class EnvioNacional(Envio):
+    def procesar_envio(self):
+        costo = self._peso * 2
+        print(f"Envío Nacional: Va por camión. Costo de transporte: ${costo}")
+
+class EnvioInternacional(Envio):
+    def procesar_envio(self):
+        costo = (self._peso * 10) + 50
+        print(f"Envío Internacional: Va por avión. Costo con aduana: ${costo}")
+
+paquetes = [EnvioNacional(5), EnvioInternacional(5)]
+
+for p in paquetes:
+    p.procesar_envio()
