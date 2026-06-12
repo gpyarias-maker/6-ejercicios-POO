@@ -1,0 +1,25 @@
+class Vehiculo:
+    def __init__(self, modelo, precio_base):
+        self.modelo = modelo
+
+        self._precio_base = precio_base
+
+    def calcular_precio(self):
+        return self._precio_base
+
+class Auto(Vehiculo):
+    def calcular_precio(self):
+        # 4. POLIMORFISMO: El auto calcula su precio sumando impuestos específicos.
+        impuesto = self._precio_base * 0.15
+        return self._precio_base + impuesto
+
+class Moto(Vehiculo):
+    def calcular_precio(self):
+        # 4. POLIMORFISMO: La moto calcula su precio con un impuesto menor.
+        impuesto = self._precio_base * 0.05
+        return self._precio_base + impuesto
+
+vehiculos = [Auto("Toyota Corolla", 20000), Moto("Yamaha R1", 10000)]
+
+for v in vehiculos:
+    print(f"El precio final de {v.modelo} es: ${v.calcular_precio()}")
